@@ -163,6 +163,44 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2020/04/02/go-wait-group/">协程同步等待锁</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://yoursite.com/index.html">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2020-04-02T05:50:01.000Z" itemprop="datePublished">2020-04-02</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/golang/" rel="tag">golang</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <a id="more"></a>
+
+
+<p>通过同步等待组实现channel通信</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;sync&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func doWork(id int, w worker) &#123;</span><br><span class="line">	for n :&#x3D; range w.in &#123;</span><br><span class="line">		fmt.Printf(&quot;Worker %d received %c\n&quot;, id, n)</span><br><span class="line">		w.done()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">type worker struct &#123;</span><br><span class="line">	in   chan int</span><br><span class="line">	done func()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;这里使用了函数式编程</span><br><span class="line">func createWorker(id int, wg *sync.WaitGroup) worker &#123;</span><br><span class="line">	w :&#x3D; worker&#123;</span><br><span class="line">		in: make(chan int),</span><br><span class="line">		done: func() &#123;</span><br><span class="line">			wg.Done()</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">	go doWork(id, w)</span><br><span class="line">	return w</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func chanDemo() &#123;</span><br><span class="line">	var wg sync.WaitGroup</span><br><span class="line"></span><br><span class="line">	var workers [10]worker</span><br><span class="line">	for i :&#x3D; 0; i &lt; 10; i++ &#123;</span><br><span class="line">		workers[i] &#x3D; createWorker(i, &amp;wg)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	wg.Add(20)</span><br><span class="line">	for i, worker :&#x3D; range workers &#123;</span><br><span class="line">		worker.in &lt;- &#39;a&#39; + i</span><br><span class="line">	&#125;</span><br><span class="line">	for i, worker :&#x3D; range workers &#123;</span><br><span class="line">		worker.in &lt;- &#39;A&#39; + i</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	wg.Wait()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	chanDemo()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2020/04/02/go-functions/">函数式编程</a>
         </h1>
         
@@ -186,10 +224,12 @@
     
     <section class="article-body markdown-body">
         
-        <ul>
+        <a id="more"></a>
+
+<ul>
 <li>斐波那契数列</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 1 1 2 3 5 8 13 21</span><br><span class="line">&#x2F;&#x2F;     a b</span><br><span class="line">&#x2F;&#x2F;       a a+b</span><br><span class="line"></span><br><span class="line">func fibonacci() func() int &#123;</span><br><span class="line">	a, b :&#x3D; 0, 1</span><br><span class="line">	return func() int &#123;</span><br><span class="line">		a, b &#x3D; b, a+b</span><br><span class="line">		return a</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	f :&#x3D; fibonacci()</span><br><span class="line">	fmt.Println(f())</span><br><span class="line">	fmt.Println(f())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;1 1 2 3 5 8 13 </span><br><span class="line">&#x2F;&#x2F;    a b</span><br><span class="line">&#x2F;&#x2F;      a a+b</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">func fibonacci() func() int &#123;</span><br><span class="line">	a, b :&#x3D; 0, 1</span><br><span class="line">	return func() int &#123;</span><br><span class="line">		a, b &#x3D; b, a+b</span><br><span class="line">		return a</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	f :&#x3D; fibonacci()</span><br><span class="line">	fmt.Println(f())</span><br><span class="line">	fmt.Println(f())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         
     </section>
 </article>
