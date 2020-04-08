@@ -325,6 +325,85 @@
 </article>
 
 
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2020/04/02/regexp/">正则表达式</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://yoursite.com/index.html">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2020-04-02T05:50:01.000Z" itemprop="datePublished">2020-04-02</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/golang/" rel="tag">golang</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <a id="more"></a>
+
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">   str := <span class="string">`my email0 alfred@gmail.com</span></span><br><span class="line"><span class="string">		my email1 is xiaoming@qq.com</span></span><br><span class="line"><span class="string">		my email2 is zhangsan@qq.com.cn</span></span><br><span class="line"><span class="string">		`</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> matched, err := regexp.MatchString(<span class="string">`([a-zA-z0-9]+)@([a-zA-z0-9]+)(\.[a-zA-z0-9.]+)`</span>, str); err == <span class="literal">nil</span> &#123;</span><br><span class="line">	fmt.Println(matched)</span><br><span class="line">&#125;</span><br><span class="line">re := regexp.MustCompile(<span class="string">`([a-zA-z0-9]+)@([a-zA-z0-9]+)(\.[a-zA-z0-9.]+)`</span>)</span><br><span class="line"><span class="comment">//match := re.FindAllString(str, -1)</span></span><br><span class="line">match := re.FindAllStringSubmatch(str, <span class="number">-1</span>)</span><br><span class="line">fmt.Println(match)</span><br></pre></td></tr></table></figure>
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2020/04/02/html-charset/">Go语言对获取的html进行转码，并通过正则获取网页内容</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://yoursite.com/index.html">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2020-04-02T05:50:01.000Z" itemprop="datePublished">2020-04-02</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/golang/" rel="tag">golang</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>需要下载的包：”golang.org/x/text” ”golang.org/x/net/html”，前者用来对HTML进行转码，而后者则是猜测出当前获取的HTML是哪一种编码，辅助前者完成转码。</p>
+        
+        <p class="article-more-link">
+            <a href="/2020/04/02/html-charset/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
 
 
 
