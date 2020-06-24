@@ -227,11 +227,11 @@
 
 
 <p>9.打包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tar -zcvf data.back.tar.gz --exclude&#x3D;parent&#x2F;upload parent</span><br><span class="line"></span><br><span class="line">tar -xzvf data.back.tar.gz</span><br><span class="line"></span><br><span class="line">tar -zcvf admin_greencampus.11.15.tar.gz admin_greencampus</span><br><span class="line"></span><br><span class="line">tar -zcvf www.xiaotui.so.11.1.tar.gz --exclude&#x3D;www.xiaotui.so&#x2F;uploads --exclude&#x3D;www.xiaotui.so&#x2F;BEESCRMdata&#x2F;logs --exclude&#x3D;www.xiaotui.so&#x2F;BEESCRMdata&#x2F;temp --exclude&#x3D;www.xiaotui.so&#x2F;BEESCRM&#x2F;Extend&#x2F;Task&#x2F;Logs www.xiaotui.so</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tar -zcvf data.back.tar.gz --exclude&#x3D;parent&#x2F;upload parent</span><br><span class="line"></span><br><span class="line">tar -xzvf data.back.tar.gz</span><br><span class="line"></span><br><span class="line">tar -zcvf xxx.11.15.tar.gz xxx</span><br><span class="line"></span><br><span class="line">tar -zcvf xxx.11.1.tar.gz --exclude&#x3D;xxx&#x2F;uploads --exclude&#x3D;xxx&#x2F;BEESCRMdata&#x2F;logs --exclude&#x3D;xxx&#x2F;BEESCRMdata&#x2F;temp --exclude&#x3D;xxx&#x2F;BEESCRM&#x2F;Extend&#x2F;Task&#x2F;Logs xxx</span><br></pre></td></tr></table></figure>
 
 
 <p>10.清空文件内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;dev&#x2F;null &gt; hl.greencampus.me.log</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;dev&#x2F;null &gt; hl.xxx.log</span><br></pre></td></tr></table></figure>
 
 
 <p>11.查看端口占用情况</p>
@@ -250,7 +250,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;sudoers</span><br><span class="line">用户名     ALL&#x3D;(ALL)       ALL</span><br></pre></td></tr></table></figure>
 
 <p>17 文件中查找字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find  &#x2F;etc&#x2F;httpd&#x2F;conf.d&#x2F;   -name &#39;*.conf&#39; | xargs  grep &#39;api.xt.beescrm.com&#39;</span><br><span class="line">find  &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;vhost&#x2F;   -name &#39;*.conf&#39; | xargs  grep &#39;wap.canyin.greencampus.cc&#39;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find  &#x2F;etc&#x2F;httpd&#x2F;conf.d&#x2F;   -name &#39;*.conf&#39; | xargs  grep &#39;xxx&#39;</span><br><span class="line">find  &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;vhost&#x2F;   -name &#39;*.conf&#39; | xargs  grep &#39;xxx&#39;</span><br></pre></td></tr></table></figure>
 
 <p>18 公网ip获取</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl ifconfig.me </span><br><span class="line">curl cip.cc</span><br></pre></td></tr></table></figure>
