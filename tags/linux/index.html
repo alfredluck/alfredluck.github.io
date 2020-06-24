@@ -7,10 +7,10 @@
 
     
 
-    <title>Go语言对获取的html进行转码，并通过正则获取网页内容 | Afred</title>
+    <title>Tag: linux | Afred</title>
     <meta name="author" content="John Doe" />
     <meta name="keywords" content="" />
-    <meta name="description" content="需要下载的包：”golang.org/x/text” ”golang.org/x/net/html”，前者用来对HTML进行转码，而后者则是猜测出当前获取的HTML是哪一种编码，辅助前者完成转码。需要用到的包:1234567891011import (	&#34;bufio&#34;	&#34;fmt&#34;	&#34;io&#34;	&#34;io/ioutil&#34;	&#34;net/http&#34;	&#34;regexp&#34;	&#34;golang.org/x/net/html/charset&#34;	&#34;golang.org/x/text/encoding&#34;	&#34;go..." />
+    <meta name="description" content="" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
 
@@ -79,7 +79,7 @@
                 <span class="nav-text">Linux</span>
             </a>
         
-            <a class="nav-item" href="/tags">
+            <a class="nav-item active" href="/tags">
                 <span class="nav-text">标签</span>
             </a>
         
@@ -103,8 +103,6 @@
     <div id="aside-inner" class="aside-inner">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
 
-        
-        
         
         
 
@@ -163,79 +161,53 @@
 
         <div id="content" class="content">
             <div id="wrapper" class="wrapper" style="max-width: 800px">
-                <article class="article" itemscope itemprop="blogPost">
+                
+
+
+<div class="page-hd">
+    linux
+    <small>(1)</small>
+</div>
+
+
+
     
-    <header class="article-header">
+    
+    
+    
+    
+    <section class="archives-wrap">
+    <div class="archive-year-wrap">
+    <a href="/archives/2020" class="page-hd">
+        2020
+    </a>
+    </div>
+    <ol class="archives">
+    
+
+    <li class="archive-section-item">
         
-        <h1 itemprop="name">
-            Go语言对获取的html进行转码，并通过正则获取网页内容
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://yoursite.com/2020/04/02/html-charset/index.html">
+<article class="archive-article archive-type-post">
+    <div class="archive-article-inner">
+        <header class="archive-article-header">
+            <a class="archive-article-link" href="/2020/04/02/liux-shell/">Linux 常用命令</a>
+            <span class="archive-article-date">
+                (<a class="article-date" href="/archives/2020/04">
     
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2020-04-02T05:50:01.000Z" itemprop="datePublished">2020-04-02</time>
+    <time datetime="2020-04-02T05:50:01.000Z" itemprop="datePublished">4/2</time>
 </a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/golang/" rel="tag">golang</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>需要下载的包：”golang.org/x/text” ”golang.org/x/net/html”，前者用来对HTML进行转码，而后者则是猜测出当前获取的HTML是哪一种编码，辅助前者完成转码。</p>
-<a id="more"></a>
-
-
-<p>需要用到的包:</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"bufio"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"io"</span></span><br><span class="line">	<span class="string">"io/ioutil"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">	<span class="string">"regexp"</span></span><br><span class="line">	<span class="string">"golang.org/x/net/html/charset"</span></span><br><span class="line">	<span class="string">"golang.org/x/text/encoding"</span></span><br><span class="line">	<span class="string">"golang.org/x/text/transform"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p>main函数</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	resp, err := http.Get(<span class="string">"xxxx"</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> resp.Body.Close()</span><br><span class="line">	<span class="keyword">if</span> resp.StatusCode != http.StatusOK &#123;</span><br><span class="line">		fmt.Println(<span class="string">"请求失败 statusCode: %d"</span>, resp.StatusCode)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//推测字符编码</span></span><br><span class="line">	e := determineEncoding(resp.Body)</span><br><span class="line">	utf8Reader := transform.NewReader(resp.Body, e.NewDecoder())</span><br><span class="line">	all, err := ioutil.ReadAll(utf8Reader)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(e)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	getCityList(all)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>determineEncoding用来猜测HTML代码的编码格式</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">determineEncoding</span><span class="params">(r io.Reader)</span> <span class="title">encoding</span>.<span class="title">Encoding</span></span> &#123;</span><br><span class="line">	bytes, err := bufio.NewReader(r).Peek(<span class="number">1024</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(err)</span><br><span class="line">	&#125;</span><br><span class="line">	e, _, _ := charset.DetermineEncoding(bytes, <span class="string">""</span>)</span><br><span class="line">	<span class="keyword">return</span> e</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>正则匹配网页内容</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getCityList</span><span class="params">(contents []<span class="keyword">byte</span>)</span></span> &#123;</span><br><span class="line">	<span class="comment">//[^&gt;]*  0个或者多个不包含&gt;的字符</span></span><br><span class="line">	reg := regexp.MustCompile(<span class="string">`&lt;a href="(xxxxx/[0-9a-z]+)"[^&gt;]*&gt;([^&lt;]+)&lt;/a&gt;`</span>)</span><br><span class="line">	mathches := reg.FindAllSubmatch(contents, <span class="number">-1</span>)</span><br><span class="line">	<span class="keyword">for</span> _, m := <span class="keyword">range</span> mathches &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"city :%s url: %s \n"</span>, m[<span class="number">2</span>], m[<span class="number">1</span>])</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">"found count %d \n"</span>, <span class="built_in">len</span>(mathches))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-        
-    </section>
+)
+            </span>
+        </header>
+    </div>
 </article>
+    </li>
+
+
+</ol></section>
 
 
 
-<a id="pagenext" href="/2020/04/02/liux-shell/" class="article-next" title="Linux 常用命令"><i class="icon-arrow-right"></i></a>
-
-
-<a id="pageprev" href="/2020/04/02/go-wait-group/" class="article-prev" title="协程同步等待锁"><i class="icon-arrow-left"></i></a>
-
-
-
-<div class="comments">
-    <div id="comments"></div>
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
-    new Gitalk({
-        clientID: "7fbe80427f54741e289f",
-        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
-        repo: "alfredluck.github.io",
-        owner: "alfredluck",
-        admin: ["alfredluck"],
-        id: "2020/04/02/html-charset",
-        distractionFreeMode: true,
-        title: "Go语言对获取的html进行转码，并通过正则获取网页内容",
-        body: "http://yoursite.com/2020/04/02/html-charset/",
-        labels: ["golang"]
-    }).render('comments');
-    </script>
-</div>
 
 
             </div>
@@ -299,33 +271,6 @@
         }
     });
     </script>
-    
-        
-<script src="/js/scrollspy.min.js"></script>
-
-        <script type="text/javascript">
-        $(document.body).scrollspy({target: '#aside-inner'});
-
-        $(window).on('resize', function() {
-            var hw = $('#header').width();
-            var ww = $('#wrapper').width();
-            var space = ($(this).width() - hw - ww) / 2 / 2;
-
-            var pageprev = $('#pageprev');
-            var pagenext = $('#pagenext');
-            var avg = (pageprev.width() + pagenext.width()) / 2
-
-            if(space > avg) {
-                var len = space - avg / 2;
-                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
-                pageprev.css($.extend({left: hw + len}, styles));
-                pagenext.css($.extend({right: len}, styles));
-            } else {
-                pageprev.removeAttr('style');
-                pagenext.removeAttr('style');
-            }
-        }).trigger('resize');
-        </script>
     
 
 </body>
