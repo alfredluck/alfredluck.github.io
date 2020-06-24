@@ -63,6 +63,10 @@
                 <span class="nav-text">首页</span>
             </a>
         
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">归档</span>
+            </a>
+        
             <a class="nav-item" href="/categories/php-end">
                 <span class="nav-text">PHP</span>
             </a>
@@ -81,10 +85,6 @@
         
             <a class="nav-item" href="/tags">
                 <span class="nav-text">标签</span>
-            </a>
-        
-            <a class="nav-item" href="/archives">
-                <span class="nav-text">归档</span>
             </a>
         
             <a class="nav-item" href="/atom.xml">
@@ -288,6 +288,48 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2020/04/02/go-wait-group/">协程同步等待锁</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://yoursite.com/index.html">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2020-04-02T05:50:01.000Z" itemprop="datePublished">2020-04-02</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/golang/" rel="tag">golang</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>waitgroup类似于的信号量，用于等待所有的goroutine退出，基本的操作包括<br>add(int) 增加信号的值,add的参数应该都为正数 ，done() 减少信号的值,相当于add(-1) ，wait() 等待信号量值为0，等待期间会一直阻塞</p>
+        
+        <p class="article-more-link">
+            <a href="/2020/04/02/go-wait-group/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2020/04/02/go-functions/">函数式编程</a>
         </h1>
         
@@ -319,48 +361,6 @@
         
         <p class="article-more-link">
             <a href="/2020/04/02/go-functions/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2020/04/02/go-wait-group/">协程同步等待锁</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://yoursite.com/index.html">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2020-04-02T05:50:01.000Z" itemprop="datePublished">2020-04-02</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/golang/" rel="tag">golang</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>waitgroup类似于的信号量，用于等待所有的goroutine退出，基本的操作包括<br>add(int) 增加信号的值,add的参数应该都为正数 ，done() 减少信号的值,相当于add(-1) ，wait() 等待信号量值为0，等待期间会一直阻塞</p>
-        
-        <p class="article-more-link">
-            <a href="/2020/04/02/go-wait-group/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
